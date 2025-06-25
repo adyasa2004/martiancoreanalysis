@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  base: '/KritiMartianCore57/',
+  base: '/martiancoreanalysis/',
+  plugins: [react()],
 });
