@@ -64,13 +64,12 @@ Visit the URL printed in terminal (typically `http://localhost:5173/`)
 
 ---
 
-## 🎥 Demo
+## 🎥 Demo Video
 
 <p align="center">
-  <video width="700" controls>
-    <source src="demo.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
+  <a href="https://drive.google.com/file/d/1me1K_lCHtz8hJqQ1P0RRMrMEFDTmgXFc/view?usp=share_link" target="_blank">
+    <img src="https://img.shields.io/badge/▶️%20Click%20to%20Watch%20Demo-blue?style=for-the-badge" alt="Watch Demo Video"/>
+  </a>
 </p>
 
 ---
