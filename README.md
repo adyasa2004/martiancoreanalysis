@@ -1,149 +1,107 @@
-# Seismic Data Analysis & Regression Model Comparison
+# 🤖 Martian Core Quake Visualizer (ML + 3D Visualization)
 
-## 🌐 Mars Quake Visualizer (3D Web App - Local Use Only)
+This project combines **machine learning** with **3D visualization** to analyze and display seismic activity on Mars. Using real or simulated Martian quake data, it predicts characteristics of seismic events and maps them visually using Three.js on an interactive globe.
 
-> ⚠️ This project is currently **not hosted online**. To view the 3D Mars quake visualization, follow the local setup instructions below.
+---
 
-### 📁 Project Directory Structure
+## 🚀 Features
 
-```
-project-root/
-│
-├── index.html
-├── main.js
-├── vite.config.js
-├── package.json
-├── assets/
-│   ├── mars.jpg
-│   ├── stars_px.png
-│   ├── stars_nx.png
-│   ├── stars_py.png
-│   ├── stars_ny.png
-│   ├── stars_pz.png
-│   ├── stars_nz.png
-│   └── data.json
-```
+- 🔍 ML-based quake classification & prediction
+- 🌍 Interactive 3D Mars globe (Three.js powered)
+- 📍 Quake markers colored by magnitude
+- 🔁 Expanding wave animations for impact visualization
+- 🧭 Smooth orbit controls, zoom, pan
+- 🔄 Reset alignment button for camera
+- 📊 Dropdown-based quake selector for quick exploration
+- 📐 Modular codebase for ML + visualization separation
 
-### 🧰 Prerequisites
+---
 
-Ensure you have **Node.js** and **npm** installed. Then install Vite (if not already):
+## 🧠 Machine Learning Component
 
+The ML model is trained to classify and regress seismic properties such as:
+
+- Shadow vs. non-shadow zone detection
+- Core radius prediction based on:
+  - P-wave & S-wave velocity
+  - Density values
+
+### 📦 Algorithms Used
+
+- Linear Regression ✅ (best performer)
+- Polynomial Regression
+- SVR (Support Vector Regression)
+- Decision Tree Regression
+
+### 📈 Evaluation
+
+- Metrics: Mean Squared Error (MSE), R² Score
+- Feature scaling using StandardScaler, MinMaxScaler, etc.
+
+---
+
+## 💻 Local Setup
+
+### 1. Clone the Repository
 ```bash
-npm install -g vite
+git clone https://github.com/adyasa2004/martiancoreanalysis.git
+cd martiancoreanalysis
 ```
 
-### 🚀 How to Run Locally
-
+### 2. Install Dependencies
+Make sure you have **Node.js** and **npm** installed:
 ```bash
-# Step 1: Clone the repo
-git clone https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
-cd YOUR_REPO_NAME
-
-# Step 2: Install dependencies
 npm install
+```
 
-# Step 3: Start the dev server
+### 3. Start the App
+```bash
 npm run dev
 ```
 
-Then open your browser and navigate to:
-```
-http://localhost:5173
-```
-
-> Make sure the textures in `/assets` are not missing. If you see missing images or 404s, double-check the image paths and filenames.
+### 4. View in Browser
+Visit the URL printed in terminal (typically `http://localhost:5173/`)
 
 ---
 
-## 📊 Data Simulation and Classification
+## 🖼️ Screenshots
+<!-- Add screenshots below -->
+<p align="center">
+  <img src="screenshots/screenshot1.png" alt="Visualization 1" width="600"/>
+</p>
 
-### Overview
-This project processes and classifies shadow and non-shadow regions from simulated seismic data. The dataset is obtained from the [IRIS Syngine Data Simulation](https://ds.iris.edu/ds/products/syngine/).
-
-### Data Preparation
-The dataset consists of the following columns:
-
-```
-['Time', 'displacement1', 'displacement2', 'displacement3',
- 'Class', 'dom_freq1', 'dom_freq2', 'dom_freq3', 'rms1', 'rms2', 'rms3',
- 'max1', 'min1', 'range1', 'mean1', 'max2', 'min2', 'range2', 'mean2',
- 'max3', 'min3', 'range3', 'mean3']
-```
-
-Scalers applied:
-- `MinMaxScaler`
-- `StandardScaler`
-- `MaxAbsScaler`
-- `RobustScaler`
-- `QuantileTransformer`
-
-### Installation
-Install Python libraries:
-
-```sh
-pip install numpy pandas scikit-learn
-```
-
-### Usage
-Run the classification script:
-
-```sh
-python classify_shadow.py
-```
-
-### Expected Output
-The script classifies seismic shadow vs non-shadow zones based on derived statistical features.
+<p align="center">
+  <img src="screenshots/screenshot2.png" alt="Visualization 2" width="600"/>
+</p>
 
 ---
 
-## 🧪 Regression Model: Core Radius Prediction
+## 📁 Project Structure
 
-### Dataset Columns:
-
-| Column | Description |
-|--------|-------------|
-| 1 | Core Radius (km) *(Target)* |
-| 2 | P-wave Velocity (km/s) |
-| 3 | S-wave Velocity (km/s) |
-| 4 | Density (g/cm³) |
-
-### Model Details
-The target variable (*Core Radius*) is predicted using features (*P-wave, S-wave, Density*). Models used:
-- Linear Regression (best)
-- Support Vector Regression
-- Decision Tree Regression
-- Polynomial Regression (degree 3)
-
-Preprocessing: StandardScaler for normalization (mean 0, std 1)
-
-### Performance
-- Low MSE
-- High R² score (~1)
-
----
-
-## 🧩 Run Jupyter Notebook
-
-```bash
-pip install numpy pandas scikit-learn jupyter
-jupyter notebook Module_7.ipynb
+```
+martiancoreanalysis/
+├── assets/              # Mars textures & quake data
+├── main.js              # Three.js & visualization logic
+├── ml/                  # (Optional) ML scripts or training code
+├── index.html           # HTML template
+├── style.css            # Custom styling
+└── vite.config.js       # Vite build config
 ```
 
 ---
 
-## 🗂️ Input Format
+## 📚 Data Source
 
-- Input: a ZIP containing `.SAC` files (Seismic Analysis Code)
-- Types supported: `MXE`, `MXN`
-
----
-
-## 📉 Output
-
-- A plot showing anomalies
-- Core radius regression results
-- Shadow classification accuracy
+Quake data is simulated or adapted from:
+- NASA InSight Mission seismic records
+- IRIS Syngine simulations (synthetic seismograms)
 
 ---
 
-*Note: For best results, keep libraries updated and ensure proper file paths are set in the scripts.*
+## 🤝 Contributions
+
+Got an idea? Found a bug? Want to improve visualization or ML? PRs and issues welcome!
+
+---
+
+## 🪐 Made with ML, JS & Space Curiosity by [@adyasa2004](https://github.com/adyasa2004)
