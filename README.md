@@ -64,14 +64,13 @@ Visit the URL printed in terminal (typically `http://localhost:5173/`)
 
 ---
 
-## 🖼️ Screenshots
-<!-- Add screenshots below -->
-<p align="center">
-  <img src="screenshots/screenshot1.png" alt="Visualization 1" width="600"/>
-</p>
+## 🎥 Demo
 
 <p align="center">
-  <img src="screenshots/screenshot2.png" alt="Visualization 2" width="600"/>
+  <video width="700" controls>
+    <source src="demo.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
 </p>
 
 ---
