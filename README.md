@@ -1,13 +1,66 @@
 # Seismic Data Analysis & Regression Model Comparison
 
-## Page Live At : https://dox6174.github.io/KritiMartianCore57/
+## 🌐 Mars Quake Visualizer (3D Web App - Local Use Only)
 
-# Data Simulation and Classification
+> ⚠️ This project is currently **not hosted online**. To view the 3D Mars quake visualization, follow the local setup instructions below.
 
-## Overview
+### 📁 Project Directory Structure
+
+```
+project-root/
+│
+├── index.html
+├── main.js
+├── vite.config.js
+├── package.json
+├── assets/
+│   ├── mars.jpg
+│   ├── stars_px.png
+│   ├── stars_nx.png
+│   ├── stars_py.png
+│   ├── stars_ny.png
+│   ├── stars_pz.png
+│   ├── stars_nz.png
+│   └── data.json
+```
+
+### 🧰 Prerequisites
+
+Ensure you have **Node.js** and **npm** installed. Then install Vite (if not already):
+
+```bash
+npm install -g vite
+```
+
+### 🚀 How to Run Locally
+
+```bash
+# Step 1: Clone the repo
+git clone https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
+cd YOUR_REPO_NAME
+
+# Step 2: Install dependencies
+npm install
+
+# Step 3: Start the dev server
+npm run dev
+```
+
+Then open your browser and navigate to:
+```
+http://localhost:5173
+```
+
+> Make sure the textures in `/assets` are not missing. If you see missing images or 404s, double-check the image paths and filenames.
+
+---
+
+## 📊 Data Simulation and Classification
+
+### Overview
 This project processes and classifies shadow and non-shadow regions from simulated seismic data. The dataset is obtained from the [IRIS Syngine Data Simulation](https://ds.iris.edu/ds/products/syngine/).
 
-## Data Preparation
+### Data Preparation
 The dataset consists of the following columns:
 
 ```
@@ -17,90 +70,80 @@ The dataset consists of the following columns:
  'max3', 'min3', 'range3', 'mean3']
 ```
 
-The following scalers are applied to prepare the data:
+Scalers applied:
 - `MinMaxScaler`
 - `StandardScaler`
 - `MaxAbsScaler`
 - `RobustScaler`
 - `QuantileTransformer`
 
-## Installation
-Ensure you have Python installed along with the required libraries.
+### Installation
+Install Python libraries:
 
 ```sh
 pip install numpy pandas scikit-learn
 ```
 
-## Usage
-Run the Python script to process and classify the data:
+### Usage
+Run the classification script:
 
 ```sh
 python classify_shadow.py
 ```
 
-## Expected Output
-The program predicts and classifies shadow and non-shadow regions from the simulated data based on the preprocessed features.
+### Expected Output
+The script classifies seismic shadow vs non-shadow zones based on derived statistical features.
 
+---
 
-## Dataset Information
-The dataset contains four columns representing geophysical properties:
+## 🧪 Regression Model: Core Radius Prediction
 
-| *Column Number* | *Description* |
-|------------------|----------------|
-| *Column 1* | *Core Radius (km)* (Target Variable) |
-| *Column 2* | *P-wave Velocity (km/s)* |
-| *Column 3* | *S-wave Velocity (km/s)* |
-| *Column 4* | *Density (g/cm³)* |
+### Dataset Columns:
 
-## Algorithm Used
-The *Linear Regression* algorithm is used to predict the *Core Radius* using *P-wave velocity, S-wave velocity, and Density* as input features.
+| Column | Description |
+|--------|-------------|
+| 1 | Core Radius (km) *(Target)* |
+| 2 | P-wave Velocity (km/s) |
+| 3 | S-wave Velocity (km/s) |
+| 4 | Density (g/cm³) |
 
-## Data Preprocessing
-- The *input features* and *target variable* have been *scaled* using the StandardScaler function from scikit-learn.
-- *Standardization* ensures that the *mean of the dataset is 0* and the *standard deviation is 1*, improving model performance.
+### Model Details
+The target variable (*Core Radius*) is predicted using features (*P-wave, S-wave, Density*). Models used:
+- Linear Regression (best)
+- Support Vector Regression
+- Decision Tree Regression
+- Polynomial Regression (degree 3)
 
-## Model Performance
-Applying *Linear Regression* to the dataset results in:
-- *Very low Mean Squared Error (MSE)*
-- *R² score close to 1* (indicating high accuracy)
+Preprocessing: StandardScaler for normalization (mean 0, std 1)
 
-## Model Comparison
-The *Linear Regression model* has been compared with three other regression models:
-1. *Support Vector Regression (SVR)*
-2. *Decision Tree Regression*
-3. *Polynomial Regression (Degree 3)*
+### Performance
+- Low MSE
+- High R² score (~1)
 
-*Key Finding:*  
-The *Linear Regression model* produces the most accurate results, outperforming the other models.
+---
 
-## Installation
-To run the notebook, install the necessary dependencies:
+## 🧩 Run Jupyter Notebook
 
 ```bash
 pip install numpy pandas scikit-learn jupyter
 jupyter notebook Module_7.ipynb
 ```
 
+---
 
-## Input
-The program requires a zip folder as input. The zip folder should consist of .SAC (Seismic Analysis Code) files in either of the following forms:
+## 🗂️ Input Format
 
-- MXE
-- MXN
-
-Ensure that the correct file type is provided depending on the program requirements.
-
-## Running the Code
-1. Open the file on any of the following platforms:
-   - [Kaggle](https://www.kaggle.com/)
-   - [Jupyter Notebook](https://jupyter.org/)
-   - [Google Colab](https://colab.research.google.com/)
-
-2. Execute each cell sequentially by pressing Shift + Enter or using the platform-specific run option.
-
-## Output
-The program generates a plot highlighting the anomalies in the data.
+- Input: a ZIP containing `.SAC` files (Seismic Analysis Code)
+- Types supported: `MXE`, `MXN`
 
 ---
 
-*Note:* For optimal performance, ensure that all required dependencies are installed and up-to-date on your platform of choice.
+## 📉 Output
+
+- A plot showing anomalies
+- Core radius regression results
+- Shadow classification accuracy
+
+---
+
+*Note: For best results, keep libraries updated and ensure proper file paths are set in the scripts.*
